@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreLocation
 
 
 struct CoinManager {
@@ -15,6 +14,9 @@ struct CoinManager {
     let apiKey = "E321659F-E0DA-480B-A72F-65B7C5E01338"
     
     let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR", "PHP"]
+    
+    
+    // MARK: - getting the Data calling the API call
     
     func getCoinPrice(for currency: String) {
     
@@ -39,12 +41,12 @@ struct CoinManager {
             }
             task.resume()
         }
-        
-        
     }
     
-
-
+    // MARK: - Parsing the JSON data that we get
     
+    func parseJSON() {
+        print("jhel")
+    }
     
 }
