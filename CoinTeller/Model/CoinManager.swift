@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol CoinManagerDelegate {
+    
+    func displayData(price: String, currency: String)
+    
+}
 
 struct CoinManager {
     
@@ -15,6 +20,7 @@ struct CoinManager {
     
     let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR", "PHP"]
     
+    var delegate: CoinManagerDelegate?
     
     // MARK: - getting the Data calling the API call
     
@@ -37,7 +43,11 @@ struct CoinManager {
                 
                 //Format the data that we get back
                 if let safeData = data {
-                    let btcPrice = self.parseJSON(safeData)
+                    if let btcPrice = self.parseJSON(safeData) {
+                        let priceString = String(format: "%.2f", btcPrice)
+                        
+                        self.delegate?.displayData(price: priceString, currency: currency)
+                    }
                 }
             }
             task.resume()
@@ -52,9 +62,7 @@ struct CoinManager {
         do {
             let decodedData = try decoder.decode(CoinData.self, from: data)
             let price = decodedData.rate
-            print(Int(price.rounded()))
-            return price.rounded()
-        }
+            return price        }
         catch {
             
             print(error)
