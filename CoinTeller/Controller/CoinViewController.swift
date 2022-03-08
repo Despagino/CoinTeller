@@ -11,6 +11,8 @@ class CoinViewController: UIViewController {
     
     
     @IBOutlet weak var bitcoinLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var currencyPicker: UIPickerView!
     
 
     override func viewDidLoad() {

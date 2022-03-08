@@ -53,6 +53,8 @@
                     </view>
                     <connections>
                         <outlet property="bitcoinLabel" destination="aNq-HB-eTr" id="2aU-sA-O5L"/>
+                        <outlet property="currencyPicker" destination="AaM-zn-Jd4" id="iso-fE-0e0"/>
+                        <outlet property="priceLabel" destination="Tux-jI-UvA" id="Kwa-9c-Tk2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
