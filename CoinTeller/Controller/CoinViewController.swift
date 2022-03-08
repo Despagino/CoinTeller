@@ -34,5 +34,7 @@ class CoinViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         return coinManager.currencyArray[row]
     }
 
-
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(coinManager.currencyArray[row])
+    }
 }
