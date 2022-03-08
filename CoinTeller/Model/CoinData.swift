@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CoinData {
+struct CoinData: Codable {
     
     let price: Double
     

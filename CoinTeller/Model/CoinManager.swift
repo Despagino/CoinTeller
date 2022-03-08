@@ -36,8 +36,9 @@ struct CoinManager {
                 }
                 
                 //Format the data that we get back
-                let dataToString = String(data: data!, encoding: .utf8)
-                print(dataToString!)
+                if let safeData = data {
+                    let btcPrice = self.parseJSON(safeData)
+                }
             }
             task.resume()
         }
@@ -45,8 +46,21 @@ struct CoinManager {
     
     // MARK: - Parsing the JSON data that we get
     
-    func parseJSON() {
-        print("jhel")
+    func parseJSON(_ data: Data) -> Double? {
+        
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(CoinData.self, from: data)
+            let price = decodedData.price
+            print(price)
+            return price
+        }
+        catch {
+            
+            print(error)
+            return nil
+            
+        }
     }
     
 }
